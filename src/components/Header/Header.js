@@ -24,8 +24,8 @@ const Header = () => {
           },
         },
       );
-      // #server 응답 확인용
-      console.log(response);
+
+      localStorage.setItem("token", JSON.stringify(response.data.user.name));
     } catch (error) {
       console.error(error);
     }
