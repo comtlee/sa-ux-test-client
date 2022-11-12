@@ -1,7 +1,12 @@
 import React from "react";
+import Main from "../pages/Main";
 
 const App = () => {
-  return <div className="App">SA-UX-TEST</div>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 };
 
 export default App;

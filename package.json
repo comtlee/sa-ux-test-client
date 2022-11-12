@@ -1,8 +1,8 @@
 {
-  "name": "SA-UX-TEST-Client",
+  "name": "sa-ux-test-client",
   "version": "0.1.0",
   "private": true,
-  "repository": "https://github.com/comt-mix/SA-UX-TEST-Client",
+  "repository": "https://github.com/comt-mix/sa-ux-test-client.git",
   "author": "Sang-a Lee <comt-mix@gmail.com>",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -12,7 +12,9 @@
     "eslint-plugin-prettier": "^4.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "react-icons": "^4.6.0",
+    "react-scripts": "5.0.1",
+    "styled-components": "^5.3.6"
   },
   "scripts": {
     "start": "react-scripts start",
