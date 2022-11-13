@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../config/firebase";
 import axios from "axios";
@@ -6,7 +7,21 @@ import { DOMAIN } from "../../config/domain";
 import styled from "styled-components";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const user = localStorage.getItem("name");
+
+  let userName = "";
+
+  if (user) {
+    userName = user.replace(/"/g, "");
+  }
+
   const handleLogin = async () => {
+    if (userName) {
+      return;
+    }
+
     try {
       const signInUser = await signInWithPopup(auth, provider);
       const { user } = signInUser;
@@ -25,7 +40,8 @@ const Header = () => {
         },
       );
 
-      localStorage.setItem("token", JSON.stringify(response.data.user.name));
+      localStorage.setItem("name", JSON.stringify(response.data.user.name));
+      navigate("/Projects");
     } catch (error) {
       console.error(error);
     }
@@ -35,7 +51,14 @@ const Header = () => {
     <Wrapper>
       <HeaderImg src="/images/sa.png" alt="logo" />
       <h2>SA-UX-TEST</h2>
-      <LoginButton onClick={handleLogin}>로그인</LoginButton>
+      <HeaderButton>
+        <LoginButton onClick={handleLogin}>
+          {userName ? userName : "로그인"}
+        </LoginButton>
+        {userName && (
+          <LogoutButton onClick={handleLogin}>로그아웃</LogoutButton>
+        )}
+      </HeaderButton>
     </Wrapper>
   );
 };
@@ -44,8 +67,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem;
   margin: 0.6rem;
+  padding: 0.6rem;
   border-bottom: 0.1rem solid black;
 `;
 
@@ -55,7 +78,19 @@ const HeaderImg = styled.img`
   margin-left: 1rem;
 `;
 
+const HeaderButton = styled.div`
+  display: flex;
+`;
+
 const LoginButton = styled.button`
+  margin-right: 2rem;
+  border-style: none;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+`;
+
+const LogoutButton = styled.button`
   margin-right: 2rem;
   border-style: none;
   font-size: 1rem;
