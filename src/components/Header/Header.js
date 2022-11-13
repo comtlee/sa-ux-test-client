@@ -47,6 +47,11 @@ const Header = () => {
     }
   };
 
+  const handleLogout = () => {
+    window.localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <Wrapper>
       <HeaderImg src="/images/sa.png" alt="logo" />
@@ -56,7 +61,7 @@ const Header = () => {
           {userName ? userName : "로그인"}
         </LoginButton>
         {userName && (
-          <LogoutButton onClick={handleLogin}>로그아웃</LogoutButton>
+          <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
         )}
       </HeaderButton>
     </Wrapper>
