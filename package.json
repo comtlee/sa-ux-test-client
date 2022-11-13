@@ -1,6 +1,6 @@
 {
   "name": "sa-ux-test-client",
-  "version": "0.3.2",
+  "version": "0.4.1",
   "private": true,
   "repository": "https://github.com/comt-mix/sa-ux-test-client.git",
   "author": "Sang-a Lee <comt-mix@gmail.com>",
@@ -15,6 +15,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
+    "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6"
   },

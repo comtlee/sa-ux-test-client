@@ -8,19 +8,19 @@ const Content = () => {
       <HeadText>실제 사용자의 모든 데이터를 한눈에 확인하세요.</HeadText>
       <CheckList>
         <List>
-          <FiCheck color="#f67280" /> 방문 횟수
+          <FiCheck className="icon" /> 방문 횟수
         </List>
         <List>
-          <FiCheck color="#f67280" /> 평균 이용 시간
+          <FiCheck className="icon" /> 평균 이용 시간
         </List>
         <List>
-          <FiCheck color="#f67280" /> 유입된 이전 사이트
+          <FiCheck className="icon" /> 유입된 이전 사이트
         </List>
         <List>
-          <FiCheck color="#f67280" /> 마우스의 움직임(move, hover, click)
+          <FiCheck className="icon" /> 마우스의 움직임(move, hover, click)
         </List>
         <List>
-          <FiCheck color="#f67280" /> 이용 화면 녹화
+          <FiCheck className="icon" /> 이용 화면 녹화
         </List>
       </CheckList>
     </Wrapper>
@@ -31,8 +31,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
   background-image: url("/images/ux-test.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -53,6 +53,10 @@ const CheckList = styled.div`
 const List = styled.div`
   margin: 0.8rem;
   font-size: 1.5rem;
+
+  .icon {
+    color: #f67280;
+  }
 `;
 
 export default Content;
