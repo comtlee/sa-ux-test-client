@@ -22,6 +22,18 @@ const ProjectLists = () => {
     axiosData();
   }, []);
 
+  const handleTextCopy = () => {
+    const text = document.getElementById("key").textContent;
+    const textarea = document.createElement("textarea");
+
+    textarea.textContent = text;
+    document.body.append(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+    alert("복사가 완료되었습니다.");
+  };
+
   return (
     <Container>
       {projectList &&
@@ -39,7 +51,7 @@ const ProjectLists = () => {
               <Title>Project Key</Title>
               <Content id="key">
                 {list.key}
-                <ImCopy />
+                <ImCopy className="copy" onClick={handleTextCopy} />
               </Content>
             </ContentsList>
             <BsTrash className="trash" />
@@ -84,6 +96,12 @@ const Title = styled.div`
 const Content = styled.div`
   font-size: 0.9rem;
   color: #585858;
+
+  .copy {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    color: #f67280;
+  }
 `;
 
 export default ProjectLists;
