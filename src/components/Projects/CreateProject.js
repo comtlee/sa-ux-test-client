@@ -1,11 +1,29 @@
-import React from "react";
-import Modal from "../Modal/Modal";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { DOMAIN } from "../../config/domain";
+import { v4 as uuidv4 } from "uuid";
 import ModalPortal from "../Modal/ModalPortal";
+import Modal from "../Modal/Modal";
 import styled from "styled-components";
 
 const CreateProject = () => {
+  const [projectName, setProjectName] = useState("");
+  const [projectUrl, setProjectUrl] = useState("");
+
+  const navigate = useNavigate();
+  const userId = localStorage.getItem("id");
+
   const handleProjectSubmit = (event) => {
     event.preventDefault();
+
+    axios.post(`${DOMAIN}/projects/${userId}`, {
+      projectName: projectName,
+      projectUrl: projectUrl,
+      key: uuidv4(),
+    });
+
+    navigate("/projects");
   };
   return (
     <ModalPortal>
@@ -14,11 +32,19 @@ const CreateProject = () => {
         <Form>
           <ProjectName>
             <label>PROJECT NAME</label>
-            <input />
+            <input
+              type="text"
+              value={projectName}
+              onChange={(event) => setProjectName(event.target.value)}
+            />
           </ProjectName>
           <ProjectUrl>
             <label>SITE URL</label>
-            <input />
+            <input
+              type="text"
+              value={projectUrl}
+              onChange={(event) => setProjectUrl(event.target.value)}
+            />
           </ProjectUrl>
           <Button onClick={handleProjectSubmit}>Submit</Button>
         </Form>
@@ -43,24 +69,25 @@ const Form = styled.div`
 
 const ProjectName = styled.div`
   display: flex;
-  margin-bottom: 2rem;
   flex-direction: column;
+  margin-bottom: 2rem;
 `;
 
 const ProjectUrl = styled.div`
   display: flex;
-  margin-bottom: 1em;
   flex-direction: column;
+  margin-bottom: 1em;
 `;
 
 const Button = styled.button`
   display: flex;
+  width: 100px;
+  margin: 0 auto;
+  padding: 0.7rem;
   border-radius: 1rem;
   border-style: none;
-  padding: 0.7rem;
-  margin-left: 11rem;
-  font-size: 1.2rem;
   background-color: #c0c0c0;
+  font-size: 1.2rem;
 `;
 
 export default CreateProject;
