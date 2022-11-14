@@ -1,17 +1,14 @@
 import React from "react";
 import { GrAddCircle } from "react-icons/gr";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const TotalProject = () => {
   return (
     <Wrapper>
-      <ProjectAdd>
+      <ProjectCreate to={"/projects/new"}>
         <GrAddCircle /> NEW PROJECT
-      </ProjectAdd>
-      <ProjectCount>
-        <Text>TotalProject</Text>
-        <Number>1</Number>
-      </ProjectCount>
+      </ProjectCreate>
     </Wrapper>
   );
 };
@@ -22,7 +19,7 @@ const Wrapper = styled.div`
   margin: 0 2rem;
 `;
 
-const ProjectAdd = styled.div`
+const ProjectCreate = styled(Link)`
   display: flex;
   align-items: center;
   width: 20vmin;
@@ -32,24 +29,6 @@ const ProjectAdd = styled.div`
   border: 0.1rem solid #c0c0c0;
   border-radius: 2rem;
   font-size: 0.8rem;
-  color: #585858;
-`;
-
-const ProjectCount = styled.div`
-  display: inline-block;
-  flex-direction: column;
-  width: 20vmin;
-  padding: 1.4rem;
-  border: 0.1rem solid #c0c0c0;
-  border-radius: 2rem;
-`;
-
-const Text = styled.div`
-  font-size: 0.8rem;
-  color: #c0c0c0;
-`;
-
-const Number = styled.div`
   color: #585858;
 `;
 
