@@ -1,6 +1,6 @@
 import React from "react";
-import { GrAddCircle } from "react-icons/gr";
 import { Link } from "react-router-dom";
+import { GrAddCircle } from "react-icons/gr";
 import styled from "styled-components";
 
 const TotalProject = () => {
@@ -28,6 +28,7 @@ const ProjectCreate = styled(Link)`
   padding: 1rem;
   border: 0.1rem solid #c0c0c0;
   border-radius: 2rem;
+  text-decoration: none;
   font-size: 0.8rem;
   color: #585858;
 `;
