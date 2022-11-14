@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Modal = ({ children }) => {
-  const [isModal, setIsModal] = useState(true);
-  const onClose = () => {
-    setIsModal(!isModal);
-  };
-
   return (
-    <Background onClick={onClose}>
-      {isModal && <Content>{children}</Content>}
+    <Background>
+      <Content>{children}</Content>
     </Background>
   );
 };
@@ -24,6 +19,8 @@ const Background = styled.div`
 `;
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -31,10 +28,8 @@ const Content = styled.div`
   width: 70vmin;
   height: 40vmin;
   padding: 1rem;
-  background: #dfdfff;
   border-radius: 2rem;
-  display: flex;
-  flex-direction: column;
+  background: #dfdfff;
 `;
 
 export default Modal;
