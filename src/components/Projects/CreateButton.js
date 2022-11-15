@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { GrAddCircle } from "react-icons/gr";
 import styled from "styled-components";
 
-const TotalProject = () => {
+const CreateButton = () => {
   return (
     <Wrapper>
       <ProjectCreate to={"/projects/new"}>
@@ -33,4 +33,4 @@ const ProjectCreate = styled(Link)`
   color: #585858;
 `;
 
-export default TotalProject;
+export default CreateButton;

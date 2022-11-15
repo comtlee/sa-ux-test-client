@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Modal = ({ children }) => {
+const ModalDelete = ({ children }) => {
   return (
     <Background>
       <Content>{children}</Content>
@@ -15,7 +15,7 @@ const Background = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #d0d0d0;
 `;
 
 const Content = styled.div`
@@ -25,11 +25,11 @@ const Content = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 70vmin;
-  height: 40vmin;
+  width: 30vmin;
+  height: 10vmin;
   padding: 1rem;
   border-radius: 2rem;
-  background: #dfdfff;
+  background: #ffffff;
 `;
 
-export default Modal;
+export default ModalDelete;
