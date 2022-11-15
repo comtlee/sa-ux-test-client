@@ -4,6 +4,7 @@ import { DOMAIN } from "../../config/domain";
 import { BsTrash } from "react-icons/bs";
 import { ImCopy } from "react-icons/im";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ProjectLists = () => {
   const [projectList, setProjectList] = useState("");
@@ -54,7 +55,9 @@ const ProjectLists = () => {
                 <ImCopy className="copy" onClick={handleTextCopy} />
               </Content>
             </ContentsList>
-            <BsTrash className="trash" />
+            <TrashIcon to={`/projects/${list._id}/delete`}>
+              <BsTrash />
+            </TrashIcon>
           </Wrapper>
         ))}
     </Container>
@@ -75,12 +78,6 @@ const Wrapper = styled.div`
   padding: 1rem;
   border-radius: 2rem;
   box-shadow: 0 1px 6px 0 #c0c0c0;
-
-  .trash {
-    width: 100px;
-    margin: 0 auto;
-    font-size: 3rem;
-  }
 `;
 
 const ContentsList = styled.div`
@@ -89,7 +86,7 @@ const ContentsList = styled.div`
 
 const Title = styled.div`
   margin-bottom: 0.2rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: #c0c0c0;
 `;
 
@@ -102,6 +99,13 @@ const Content = styled.div`
     font-size: 1rem;
     color: #f67280;
   }
+`;
+
+const TrashIcon = styled(Link)`
+  width: 100px;
+  margin: 0 auto;
+  font-size: 1.7rem;
+  color: #080808;
 `;
 
 export default ProjectLists;

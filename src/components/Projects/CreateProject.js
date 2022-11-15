@@ -4,7 +4,7 @@ import axios from "axios";
 import { DOMAIN } from "../../config/domain";
 import { v4 as uuidv4 } from "uuid";
 import ModalPortal from "../Modal/ModalPortal";
-import Modal from "../Modal/Modal";
+import ModalCreate from "../Modal/ModalCreate";
 import styled from "styled-components";
 
 const CreateProject = () => {
@@ -27,7 +27,7 @@ const CreateProject = () => {
   };
   return (
     <ModalPortal>
-      <Modal>
+      <ModalCreate>
         <Title>Create a Project</Title>
         <Form>
           <ProjectName>
@@ -48,7 +48,7 @@ const CreateProject = () => {
           </ProjectUrl>
           <Button onClick={handleProjectSubmit}>Submit</Button>
         </Form>
-      </Modal>
+      </ModalCreate>
     </ModalPortal>
   );
 };
