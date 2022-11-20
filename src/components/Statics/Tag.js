@@ -3,12 +3,21 @@ import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import styled from "styled-components";
 
-const Tag = () => {
+const Tag = ({ tagKeys, tagValues }) => {
+  // const tagList = clickData.map((data) => JSON.parse(data.tag));
+  // const counts = tagList.reduce((name, count) => {
+  //   name[count] = (name[count] || 0) + 1;
+  //   return name;
+  // }, {});
+
+  // const keys = Object.keys(counts);
+  // const values = Object.values(counts);
+
   const data = {
-    labels: [1, 2, 3, 4, 5],
+    labels: tagKeys.map((key) => key),
     datasets: [
       {
-        data: [1, 2, 3, 4, 5],
+        data: tagValues.map((value) => value),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",
@@ -47,9 +56,9 @@ const Wrapper = styled.div`
 
 const Title = styled.div`
   text-align: center;
+  color: #ffffff;
   border-radius: 0.2rem;
   background-color: #faa0a0;
-  color: #ffffff;
 `;
 
 export default Tag;

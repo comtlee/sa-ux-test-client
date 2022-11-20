@@ -3,12 +3,20 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import styled from "styled-components";
 
-const Site = () => {
+const Site = ({ siteData }) => {
+  const counts = siteData.reduce((name, count) => {
+    name[count] = (name[count] || 0) + 1;
+    return name;
+  }, {});
+
+  const keys = Object.keys(counts);
+  const values = Object.values(counts);
+
   const data = {
-    labels: [1, 2, 3, 4, 5],
+    labels: keys.map((site) => site),
     datasets: [
       {
-        data: [1, 2, 3, 4, 5],
+        data: values.map((site) => site),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",
@@ -49,9 +57,9 @@ const Wrapper = styled.div`
 
 const Title = styled.div`
   text-align: center;
+  color: #ffffff;
   border-radius: 0.2rem;
   background-color: #faa0a0;
-  color: #ffffff;
 `;
 
 export default Site;
