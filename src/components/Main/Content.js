@@ -17,7 +17,7 @@ const Content = () => {
           <FiCheck className="icon" /> 유입된 이전 사이트
         </List>
         <List>
-          <FiCheck className="icon" /> 마우스의 움직임(move, hover, click)
+          <FiCheck className="icon" /> 이용자의 관심 키워드 파악(click)
         </List>
         <List>
           <FiCheck className="icon" /> 이용 화면 녹화
@@ -36,7 +36,7 @@ const Wrapper = styled.div`
   background-image: url("/images/ux-test.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 80%;
+  background-size: 90%;
 `;
 
 const HeadText = styled.div`
