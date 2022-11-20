@@ -1,26 +1,35 @@
 import React from "react";
 import Visit from "./Visit";
-import Time from "./Time";
 import Site from "./Site";
+import Time from "./Time";
 import Keyword from "./Keyword";
 import Tag from "./Tag";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const Graph = () => {
+const Graph = ({
+  visitData,
+  timeData,
+  siteData,
+  keywordKeys,
+  keywordValues,
+  tagKeys,
+  tagValues,
+}) => {
   return (
     <Wrapper>
       <Left>
         <Card>
-          <Visit />
-          <Time />
+          <Visit visitData={visitData} />
+          <Time timeData={timeData} />
         </Card>
         <Chart>
-          <Site />
+          <Site siteData={siteData} />
         </Chart>
       </Left>
       <Right>
-        <Keyword />
-        <Tag />
+        <Keyword keywordKeys={keywordKeys} keywordValues={keywordValues} />
+        <Tag tagKeys={tagKeys} tagValues={tagValues} />
       </Right>
     </Wrapper>
   );
@@ -33,9 +42,9 @@ const Wrapper = styled.div`
 
 const Left = styled.div`
   display: flex;
-  float: left;
   flex-direction: column;
   align-items: center;
+  float: left;
   width: 40%;
 `;
 
@@ -43,7 +52,6 @@ const Card = styled.div`
   display: flex;
   margin-bottom: 3rem;
 `;
-
 const Chart = styled.div`
   margin-left: 3rem;
 `;
@@ -52,8 +60,12 @@ const Right = styled.div`
   display: flex;
   float: right;
   justify-content: space-evenly;
-  width: 60%;
   margin-top: 2rem;
+  width: 60%;
 `;
+
+Graph.propTypes = {
+  staticData: PropTypes.number,
+};
 
 export default Graph;
