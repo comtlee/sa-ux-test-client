@@ -2,14 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { GiPlayerTime } from "react-icons/gi";
 
-const Time = () => {
+const Time = ({ timeData }) => {
+  const time =
+    new Date(timeData.disconnectTime) - new Date(timeData.connectTime);
+  const average = Math.ceil(time / 1000 / 60);
+
   return (
     <Wrapper>
       <Title>
         <GiPlayerTime className="icon" />
         <div>Average Time</div>
       </Title>
-      <Content>10분</Content>
+      <Content>{average}분</Content>
     </Wrapper>
   );
 };
@@ -30,15 +34,15 @@ const Title = styled.div`
   margin: 1rem;
 
   .icon {
-    margin-right: 1rem;
     font-size: 2rem;
+    margin-right: 1rem;
     color: rgb(160, 160, 160);
   }
 `;
 
 const Content = styled.div`
-  text-align: center;
   margin: 1rem;
+  text-align: center;
   font-size: 2rem;
   color: #f67280;
 `;
