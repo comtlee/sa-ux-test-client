@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { DOMAIN } from "../../config/domain";
 import { BsTrash } from "react-icons/bs";
 import { ImCopy } from "react-icons/im";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const ProjectLists = () => {
   const [projectList, setProjectList] = useState("");
+
+  const navigate = useNavigate();
   const userId = localStorage.getItem("id");
 
   useEffect(() => {
@@ -35,26 +37,36 @@ const ProjectLists = () => {
     alert("복사가 완료되었습니다.");
   };
 
+  const handleMoveDashboard = (url) => {
+    navigate(url);
+  };
+
   return (
     <Container>
       {projectList &&
         projectList.map((list) => (
           <Wrapper key={list._id}>
-            <ContentsList>
-              <Title>Project Name</Title>
-              <Content>{list.projectName}</Content>
-            </ContentsList>
-            <ContentsList>
-              <Title>Project Url</Title>
-              <Content>{list.projectUrl}</Content>
-            </ContentsList>
-            <ContentsList>
-              <Title>Project Key</Title>
-              <Content id="key">
-                {list.key}
-                <ImCopy className="copy" onClick={handleTextCopy} />
-              </Content>
-            </ContentsList>
+            <ProjectLink
+              onClick={() =>
+                handleMoveDashboard(`/tests/${list._id}/dashboard`)
+              }
+            >
+              <ContentsList>
+                <Title>Project Name</Title>
+                <Content>{list.projectName}</Content>
+              </ContentsList>
+              <ContentsList>
+                <Title>Project Url</Title>
+                <Content>{list.projectUrl}</Content>
+              </ContentsList>
+              <ContentsList>
+                <Title>Project Key</Title>
+                <Content id="key">
+                  {list.key}
+                  <ImCopy className="copy" onClick={handleTextCopy} />
+                </Content>
+              </ContentsList>
+            </ProjectLink>
             <TrashIcon to={`/projects/${list._id}/delete`}>
               <BsTrash />
             </TrashIcon>
@@ -72,12 +84,17 @@ const Container = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50vmin;
+  width: 60vmin;
   height: 30vmin;
   margin: 2rem;
   padding: 1rem;
   border-radius: 2rem;
   box-shadow: 0 1px 6px 0 #c0c0c0;
+`;
+
+const ProjectLink = styled.div`
+  margin: 0.4rem;
+  text-decoration: none;
 `;
 
 const ContentsList = styled.div`
@@ -102,7 +119,7 @@ const Content = styled.div`
 `;
 
 const TrashIcon = styled(Link)`
-  width: 100px;
+  width: 7vmin;
   margin: 0 auto;
   font-size: 1.7rem;
   color: #080808;
