@@ -5,6 +5,7 @@ import Projects from "../pages/Projects";
 import CreateProject from "../components/Projects/CreateProject";
 import DeleteProject from "../components/Projects/DeleteProject";
 import Dashboard from "../pages/Dashboard";
+import Recording from "../pages/Recording";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Route path="/projects/new" element={<CreateProject />} />
       <Route path="/projects/:id/delete" element={<DeleteProject />} />
       <Route path="/tests/:id/dashboard" element={<Dashboard />} />
+      <Route path="/tests/:id/recording" element={<Recording />} />
     </Routes>
   );
 };
