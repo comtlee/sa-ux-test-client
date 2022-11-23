@@ -8,11 +8,19 @@ const Navbar = () => {
 
   return (
     <Wrapper>
-      <Dashboard to={"/projects"}>Projectlist</Dashboard>
-      <Dashboard to={`/tests/${JSON.parse(projectId)}/dashboard`}>
+      <Dashboard to={"/projects"} data-testid="Projectlist">
+        Projectlist
+      </Dashboard>
+      <Dashboard
+        to={`/tests/${JSON.parse(projectId)}/dashboard`}
+        data-testid="dashboard"
+      >
         Dashboard
       </Dashboard>
-      <Dashboard to={`/tests/${JSON.parse(projectId)}/recording`}>
+      <Dashboard
+        to={`/tests/${JSON.parse(projectId)}/recording`}
+        data-testid="recording"
+      >
         Recording
       </Dashboard>
     </Wrapper>
