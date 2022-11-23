@@ -17,6 +17,7 @@ const Dashboard = () => {
 
   const params = useParams();
   const { id: projectId } = params;
+
   localStorage.setItem("projectId", JSON.stringify(projectId));
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const Dashboard = () => {
         setSite(referrer);
         setClick(click);
       } catch (error) {
-        console.log(error);
+        throw new Error(error);
       }
     };
     axiosData();
@@ -46,7 +47,6 @@ const Dashboard = () => {
     name[count] = (name[count] || 0) + 1;
     return name;
   }, {});
-
   const keywordKeys = Object.keys(keywordCounts);
   const keywordValues = Object.values(keywordCounts);
 
@@ -55,7 +55,6 @@ const Dashboard = () => {
     name[count] = (name[count] || 0) + 1;
     return name;
   }, {});
-
   const tagKeys = Object.keys(tagCounts);
   const tagValues = Object.values(tagCounts);
 
