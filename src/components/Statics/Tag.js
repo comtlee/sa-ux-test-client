@@ -2,17 +2,10 @@ import React from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
+import PropTypes from "prop-types";
 
 const Tag = ({ tagKeys, tagValues }) => {
-  // const tagList = clickData.map((data) => JSON.parse(data.tag));
-  // const counts = tagList.reduce((name, count) => {
-  //   name[count] = (name[count] || 0) + 1;
-  //   return name;
-  // }, {});
-
-  // const keys = Object.keys(counts);
-  // const values = Object.values(counts);
-
   const data = {
     labels: tagKeys.map((key) => key),
     datasets: [
@@ -49,16 +42,21 @@ const Tag = ({ tagKeys, tagValues }) => {
 const Wrapper = styled.div`
   width: 40vmin;
   height: 50vmin;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  -webkit-box-shadow: 2px 4px 10px 1px ${COLORS.SHADOW};
+  box-shadow: 2px 4px 10px 1px ${COLORS.SHADOW};
   border-radius: 10px;
 `;
 
 const Title = styled.div`
   text-align: center;
-  color: #ffffff;
+  color: ${COLORS.WHITE};
   border-radius: 0.2rem;
-  background-color: #faa0a0;
+  background-color: ${COLORS.LIGHT_PINK};
 `;
+
+Tag.propTypes = {
+  tagKeys: PropTypes.array.isRequired,
+  tagValues: PropTypes.array.isRequired,
+};
 
 export default Tag;

@@ -1,6 +1,7 @@
 import React from "react";
 import { FiCheck } from "react-icons/fi";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
 
 const Content = () => {
   return (
@@ -36,11 +37,12 @@ const Wrapper = styled.div`
   background-image: url("/images/ux-test.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 90%;
+  background-size: 180vmin;
+  opacity: 0.8;
 `;
 
 const HeadText = styled.div`
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   font-size: 3rem;
 `;
@@ -55,7 +57,7 @@ const List = styled.div`
   font-size: 1.5rem;
 
   .icon {
-    color: #f67280;
+    color: ${COLORS.PINK};
   }
 `;
 

@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
 
 const Navbar = () => {
   const projectId = localStorage.getItem("projectId");
 
   return (
     <Wrapper>
+      <Dashboard to={"/projects"}>Projectlist</Dashboard>
       <Dashboard to={`/tests/${JSON.parse(projectId)}/dashboard`}>
         Dashboard
       </Dashboard>
-      <Recording to={`/tests/${JSON.parse(projectId)}/recording`}>
+      <Dashboard to={`/tests/${JSON.parse(projectId)}/recording`}>
         Recording
-      </Recording>
+      </Dashboard>
     </Wrapper>
   );
 };
@@ -22,24 +24,15 @@ const Wrapper = styled.div`
   justify-content: space-evenly;
   margin: 0.6rem;
   padding: 1rem;
-  border-bottom: 0.1rem solid black;
+  border-bottom: 0.1rem solid ${COLORS.LIGHT_GRAY};
 `;
 
 const Dashboard = styled(Link)`
   text-decoration: none;
-  color: #c0c0c0;
+  color: ${COLORS.LIGHT_GRAY};
 
   :hover {
-    color: #585858;
-  }
-`;
-
-const Recording = styled(Link)`
-  text-decoration: none;
-  color: #c0c0c0;
-
-  :hover {
-    color: #585858;
+    color: ${COLORS.GRAY};
   }
 `;
 

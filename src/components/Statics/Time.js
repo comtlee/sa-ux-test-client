@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { GiPlayerTime } from "react-icons/gi";
+import { COLORS } from "../../constants/colors";
+import PropTypes from "prop-types";
 
 const Time = ({ timeData }) => {
   const time =
@@ -22,8 +24,8 @@ const Wrapper = styled.div`
   width: 35vmin;
   height: 15vmin;
   padding: 0.4rem;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  -webkit-box-shadow: 2px 4px 10px 1px ${COLORS.SHADOW};
+  box-shadow: 2px 4px 10px 1px ${COLORS.SHADOW};
   border-radius: 10px;
 `;
 
@@ -36,7 +38,7 @@ const Title = styled.div`
   .icon {
     font-size: 2rem;
     margin-right: 1rem;
-    color: rgb(160, 160, 160);
+    color: ${COLORS.LIGHT_GRAY};
   }
 `;
 
@@ -44,7 +46,11 @@ const Content = styled.div`
   margin: 1rem;
   text-align: center;
   font-size: 2rem;
-  color: #f67280;
+  color: ${COLORS.PINK};
 `;
+
+Time.propTypes = {
+  timeData: PropTypes.object.isRequired,
+};
 
 export default Time;

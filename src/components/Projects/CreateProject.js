@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import ModalPortal from "../Modal/ModalPortal";
 import ModalCreate from "../Modal/ModalCreate";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
 
 const CreateProject = () => {
   const [projectName, setProjectName] = useState("");
@@ -86,7 +87,7 @@ const Button = styled.button`
   padding: 0.7rem;
   border-radius: 1rem;
   border-style: none;
-  background-color: #c0c0c0;
+  background-color: ${COLORS.LIGHT_GRAY};
   font-size: 1.2rem;
 `;
 

@@ -5,6 +5,7 @@ import { DOMAIN } from "../../config/domain";
 import ModalPortal from "../Modal/ModalPortal";
 import ModalDelete from "../Modal/ModalDelete";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
 
 const DeleteProject = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const DeleteProject = () => {
 
     navigate("/projects");
   };
+
   return (
     <ModalPortal>
       <ModalDelete>
@@ -28,16 +30,17 @@ const DeleteProject = () => {
 
 const Text = styled.div`
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
 `;
 
 const Button = styled.button`
   width: 100px;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 0.5rem;
   border-radius: 1rem;
   border-style: none;
-  background-color: #c0c0c0;
+  background-color: ${COLORS.LIGHT_GRAY};
+  font-size: 1.2rem;
 `;
 
 export default DeleteProject;

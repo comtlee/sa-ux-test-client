@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import Main from "../pages/Main";
 import Projects from "../pages/Projects";
 import CreateProject from "../components/Projects/CreateProject";
@@ -8,14 +8,23 @@ import Dashboard from "../pages/Dashboard";
 import Recording from "../pages/Recording";
 
 const App = () => {
+  const user = localStorage.getItem("name");
+
   return (
     <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/projects/new" element={<CreateProject />} />
-      <Route path="/projects/:id/delete" element={<DeleteProject />} />
-      <Route path="/tests/:id/dashboard" element={<Dashboard />} />
-      <Route path="/tests/:id/recording" element={<Recording />} />
+      {!user ? (
+        <Route path="/" element={<Main />} />
+      ) : (
+        <Route path="/" element={<Projects />} />
+      )}
+      <Route path="/projects" element={<Projects />}>
+        <Route path="new" element={<CreateProject />} />
+        <Route path=":id/delete" element={<DeleteProject />} />
+      </Route>
+      <Route path="/tests/:id">
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="recording" element={<Recording />} />
+      </Route>
     </Routes>
   );
 };

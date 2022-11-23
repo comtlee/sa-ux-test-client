@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
+import PropTypes from "prop-types";
 
 const ModalCreate = ({ children }) => {
   return (
@@ -15,7 +17,7 @@ const Background = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: #d0d0d0;
+  background-color: ${COLORS.OPACITY};
 `;
 
 const Content = styled.div`
@@ -29,7 +31,12 @@ const Content = styled.div`
   height: 40vmin;
   padding: 1rem;
   border-radius: 2rem;
-  background: #ffffff;
+  background: ${COLORS.WHITE};
+  opacity: 0.8;
 `;
+
+ModalCreate.propTypes = {
+  children: PropTypes.element.isRequired,
+};
 
 export default ModalCreate;
