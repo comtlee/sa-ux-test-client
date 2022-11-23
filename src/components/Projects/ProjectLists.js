@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { DOMAIN } from "../../config/domain";
 import { BsTrash } from "react-icons/bs";
-import { ImCopy } from "react-icons/im";
+import { BsArrowReturnRight } from "react-icons/bs";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
 
 const ProjectLists = () => {
   const [projectList, setProjectList] = useState("");
@@ -19,23 +20,11 @@ const ProjectLists = () => {
 
         setProjectList(response.data.filteredProjects);
       } catch (error) {
-        console.log(error);
+        throw new Error(error);
       }
     };
     axiosData();
   }, []);
-
-  const handleTextCopy = () => {
-    const text = document.getElementById("key").textContent;
-    const textarea = document.createElement("textarea");
-
-    textarea.textContent = text;
-    document.body.append(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.remove();
-    alert("복사가 완료되었습니다.");
-  };
 
   const handleMoveDashboard = (url) => {
     navigate(url);
@@ -53,17 +42,20 @@ const ProjectLists = () => {
             >
               <ContentsList>
                 <Title>Project Name</Title>
-                <Content>{list.projectName}</Content>
+                <Content>
+                  <BsArrowReturnRight /> {list.projectName}
+                </Content>
               </ContentsList>
               <ContentsList>
                 <Title>Project Url</Title>
-                <Content>{list.projectUrl}</Content>
+                <Content>
+                  <BsArrowReturnRight /> {list.projectUrl}
+                </Content>
               </ContentsList>
               <ContentsList>
                 <Title>Project Key</Title>
-                <Content id="key">
-                  {list.key}
-                  <ImCopy className="copy" onClick={handleTextCopy} />
+                <Content>
+                  <BsArrowReturnRight /> {list.key}
                 </Content>
               </ContentsList>
             </ProjectLink>
@@ -85,11 +77,11 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 60vmin;
-  height: 30vmin;
-  margin: 2rem;
-  padding: 1rem;
-  border-radius: 2rem;
-  box-shadow: 0 1px 6px 0 #c0c0c0;
+  height: 35vmin;
+  margin: 0 2rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 1px 6px 0 ${COLORS.LIGHT_GRAY};
 `;
 
 const ProjectLink = styled.div`
@@ -98,31 +90,25 @@ const ProjectLink = styled.div`
 `;
 
 const ContentsList = styled.div`
-  margin: 0.4rem;
+  margin: 1rem 1rem;
 `;
 
 const Title = styled.div`
-  margin-bottom: 0.2rem;
-  font-size: 1.3rem;
-  color: #c0c0c0;
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  color: ${COLORS.LIGHT_GRAY};
 `;
 
 const Content = styled.div`
-  font-size: 0.9rem;
-  color: #585858;
-
-  .copy {
-    margin-left: 0.5rem;
-    font-size: 1rem;
-    color: #f67280;
-  }
+  font-size: 1rem;
+  color: ${COLORS.GRAY};
 `;
 
 const TrashIcon = styled(Link)`
   width: 7vmin;
   margin: 0 auto;
   font-size: 1.7rem;
-  color: #080808;
+  color: ${COLORS.LIGHT_BLACK};
 `;
 
 export default ProjectLists;

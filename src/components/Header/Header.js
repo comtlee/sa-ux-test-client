@@ -5,6 +5,7 @@ import { auth, provider } from "../../config/firebase";
 import axios from "axios";
 import { DOMAIN } from "../../config/domain";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -73,15 +74,18 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.6rem;
-  padding: 0.6rem;
-  border-bottom: 0.1rem solid black;
+  margin: 0.4rem;
+  padding: 0.5rem;
+  border-bottom: 0.1rem solid ${COLORS.LIGHT_GRAY};
+
+  h2 {
+    margin-left: 4rem;
+  }
 `;
 
 const HeaderImg = styled.img`
   width: 80px;
-  height: 50px;
-  margin-left: 1rem;
+  height: 60px;
 `;
 
 const HeaderButton = styled.div`
@@ -89,7 +93,7 @@ const HeaderButton = styled.div`
 `;
 
 const LoginButton = styled.button`
-  margin-right: 2rem;
+  margin-right: 1rem;
   border-style: none;
   font-size: 1rem;
   cursor: pointer;
@@ -97,7 +101,6 @@ const LoginButton = styled.button`
 `;
 
 const LogoutButton = styled.button`
-  margin-right: 2rem;
   border-style: none;
   font-size: 1rem;
   cursor: pointer;

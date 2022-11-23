@@ -2,6 +2,8 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
+import PropTypes from "prop-types";
 
 const Site = ({ siteData }) => {
   const counts = siteData.reduce((name, count) => {
@@ -29,6 +31,7 @@ const Site = ({ siteData }) => {
       },
     ],
   };
+
   const options = {
     indexAxis: "y",
     responsive: true,
@@ -50,16 +53,20 @@ const Site = ({ siteData }) => {
 const Wrapper = styled.div`
   width: 75vmin;
   height: 40vmin;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  -webkit-box-shadow: 2px 4px 10px 1px ${COLORS.SHADOW};
+  box-shadow: 2px 4px 10px 1px ${COLORS.SHADOW};
   border-radius: 10px;
 `;
 
 const Title = styled.div`
   text-align: center;
-  color: #ffffff;
+  color: ${COLORS.WHITE};
   border-radius: 0.2rem;
-  background-color: #faa0a0;
+  background-color: ${COLORS.LIGHT_PINK};
 `;
+
+Site.propTypes = {
+  siteData: PropTypes.array.isRequired,
+};
 
 export default Site;

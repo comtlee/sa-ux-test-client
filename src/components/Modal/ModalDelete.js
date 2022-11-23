@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { COLORS } from "../../constants/colors";
+import PropTypes from "prop-types";
 
 const ModalDelete = ({ children }) => {
   return (
@@ -15,21 +17,27 @@ const Background = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: #d0d0d0;
+  background-color: ${COLORS.OPACITY};
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   position: fixed;
+  justify-content: center;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 30vmin;
-  height: 10vmin;
+  width: 50vmin;
+  height: 20vmin;
   padding: 1rem;
   border-radius: 2rem;
-  background: #ffffff;
+  background: ${COLORS.WHITE};
+  opacity: 0.8;
 `;
+
+ModalDelete.propTypes = {
+  children: PropTypes.element.isRequired,
+};
 
 export default ModalDelete;

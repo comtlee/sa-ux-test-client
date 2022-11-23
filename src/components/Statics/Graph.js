@@ -52,8 +52,9 @@ const Card = styled.div`
   display: flex;
   margin-bottom: 3rem;
 `;
+
 const Chart = styled.div`
-  margin-left: 3rem;
+  margin-left: 5rem;
 `;
 
 const Right = styled.div`
@@ -61,11 +62,17 @@ const Right = styled.div`
   float: right;
   justify-content: space-evenly;
   margin-top: 2rem;
-  width: 60%;
+  width: 55%;
 `;
 
 Graph.propTypes = {
-  staticData: PropTypes.number,
+  visitData: PropTypes.number.isRequired,
+  timeData: PropTypes.object.isRequired,
+  siteData: PropTypes.array.isRequired,
+  keywordKeys: PropTypes.array.isRequired,
+  keywordValues: PropTypes.array.isRequired,
+  tagKeys: PropTypes.array.isRequired,
+  tagValues: PropTypes.array.isRequired,
 };
 
 export default Graph;
