@@ -36,8 +36,4 @@ const Content = styled.div`
   opacity: 0.8;
 `;
 
-ModalDelete.propTypes = {
-  children: PropTypes.element.isRequired,
-};
-
 export default ModalDelete;
