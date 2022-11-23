@@ -43,6 +43,7 @@ const Header = () => {
 
       localStorage.setItem("name", JSON.stringify(response.data.user.name));
       localStorage.setItem("id", JSON.stringify(response.data.user._id));
+
       navigate("/projects");
     } catch (error) {
       console.error(error);

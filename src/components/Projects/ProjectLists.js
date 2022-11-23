@@ -39,6 +39,7 @@ const ProjectLists = () => {
               onClick={() =>
                 handleMoveDashboard(`/tests/${list._id}/dashboard`)
               }
+              data-testid="project-list"
             >
               <ContentsList>
                 <Title>Project Name</Title>

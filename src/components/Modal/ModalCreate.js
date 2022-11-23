@@ -36,7 +36,7 @@ const Content = styled.div`
 `;
 
 ModalCreate.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export default ModalCreate;
