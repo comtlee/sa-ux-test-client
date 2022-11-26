@@ -1,40 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useQuery } from "react-query";
 import { DOMAIN } from "../config/domain";
 import Header from "../components/Header/Header";
 import Navbar from "../components/Header/Navbar";
 import Video from "../components/Statics/Video";
 
 const Recording = () => {
-  const [video, setVideo] = useState([]);
-
   const params = useParams();
   const { id: projectId } = params;
 
-  useEffect(() => {
-    const axiosData = async () => {
-      try {
-        const response = await axios.get(
-          `${DOMAIN}/tests/${JSON.stringify(projectId)}/videolist`,
-          {
-            header: { "content-type": "multipart/form-data" },
-          },
-        );
+  const getVideoList = async () => {
+    return await fetch(`${DOMAIN}/tests/${JSON.stringify(projectId)}/videolist`)
+      .then((response) => response.blob())
+      .then((blob) => URL.createObjectURL(blob));
+  };
 
-        setVideo(response.data.tests[0].video);
-      } catch (error) {
-        throw Error(error);
-      }
-    };
-    axiosData();
-  }, []);
+  const { data, isError } = useQuery("getVideoList", getVideoList, {
+    initialData: "",
+  });
+
+  if (isError) {
+    throw new Error("Error");
+  }
+  const video = data;
 
   return (
     <>
       <Header />
       <Navbar />
-      <Video videolist={video} />
+      {video && <Video video={video} />}
     </>
   );
 };

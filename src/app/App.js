@@ -6,25 +6,26 @@ import CreateProject from "../components/Projects/CreateProject";
 import DeleteProject from "../components/Projects/DeleteProject";
 import Dashboard from "../pages/Dashboard";
 import Recording from "../pages/Recording";
+import NotFound from "../pages/NotFound";
 
 const App = () => {
-  const user = localStorage.getItem("name");
+  const isLoggedIn = localStorage.getItem("name") ? true : false;
 
   return (
     <Routes>
-      {!user ? (
-        <Route path="/" element={<Main />} />
+      <Route path="/" element={isLoggedIn ? <Projects /> : <Main />} />
+      {isLoggedIn ? (
+        <>
+          <Route path="/projects" element={<Projects />}>
+            <Route path="new" element={<CreateProject />} />
+            <Route path=":id/delete" element={<DeleteProject />} />
+          </Route>
+          <Route path="/tests/:id/dashboard" element={<Dashboard />} />
+          <Route path="/tests/:id/recording" element={<Recording />} />
+        </>
       ) : (
-        <Route path="/" element={<Projects />} />
+        <Route path="*" element={<NotFound />} />
       )}
-      <Route path="/projects" element={<Projects />}>
-        <Route path="new" element={<CreateProject />} />
-        <Route path=":id/delete" element={<DeleteProject />} />
-      </Route>
-      <Route path="/tests/:id">
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="recording" element={<Recording />} />
-      </Route>
     </Routes>
   );
 };

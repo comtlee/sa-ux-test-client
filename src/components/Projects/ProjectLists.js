@@ -1,30 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { DOMAIN } from "../../config/domain";
+import { useNavigate } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
 import { BsArrowReturnRight } from "react-icons/bs";
 import styled from "styled-components";
 import { COLORS } from "../../constants/colors";
 
-const ProjectLists = () => {
-  const [projectList, setProjectList] = useState("");
-
+const ProjectLists = ({ projectList }) => {
   const navigate = useNavigate();
-  const userId = localStorage.getItem("id");
-
-  useEffect(() => {
-    const axiosData = async () => {
-      try {
-        const response = await axios.get(`${DOMAIN}/projects/${userId}`);
-
-        setProjectList(response.data.filteredProjects);
-      } catch (error) {
-        throw new Error(error);
-      }
-    };
-    axiosData();
-  }, []);
+  const projectlist = projectList?.data.filteredProjects;
 
   const handleMoveDashboard = (url) => {
     navigate(url);
@@ -32,8 +15,8 @@ const ProjectLists = () => {
 
   return (
     <Container>
-      {projectList &&
-        projectList.map((list) => (
+      {projectlist &&
+        projectlist.map((list) => (
           <Wrapper key={list._id}>
             <ProjectLink
               onClick={() =>
@@ -60,7 +43,7 @@ const ProjectLists = () => {
                 </Content>
               </ContentsList>
             </ProjectLink>
-            <TrashIcon to={`/projects/${list._id}/delete`}>
+            <TrashIcon onClick={() => navigate(`/projects/${list._id}/delete`)}>
               <BsTrash />
             </TrashIcon>
           </Wrapper>
@@ -72,14 +55,15 @@ const ProjectLists = () => {
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 1.5rem;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60vmin;
-  height: 35vmin;
-  margin: 0 2rem;
+  width: 55vmin;
+  height: 38vmin;
+  margin: 0 1rem;
   padding: 0.5rem;
   border-radius: 1rem;
   box-shadow: 0 1px 6px 0 ${COLORS.LIGHT_GRAY};
@@ -105,7 +89,7 @@ const Content = styled.div`
   color: ${COLORS.GRAY};
 `;
 
-const TrashIcon = styled(Link)`
+const TrashIcon = styled.div`
   width: 7vmin;
   margin: 0 auto;
   font-size: 1.7rem;

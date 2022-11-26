@@ -53,6 +53,7 @@ const Header = () => {
   const handleLogout = () => {
     window.localStorage.clear();
     navigate("/");
+    navigate(0);
   };
 
   return (

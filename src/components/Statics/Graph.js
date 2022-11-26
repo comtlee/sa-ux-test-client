@@ -7,29 +7,21 @@ import Tag from "./Tag";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const Graph = ({
-  visitData,
-  timeData,
-  siteData,
-  keywordKeys,
-  keywordValues,
-  tagKeys,
-  tagValues,
-}) => {
+const Graph = ({ basicEvent, mouseEvent }) => {
   return (
     <Wrapper>
       <Left>
         <Card>
-          <Visit visitData={visitData} />
-          <Time timeData={timeData} />
+          <Visit visitData={basicEvent} />
+          <Time timeData={basicEvent} />
         </Card>
         <Chart>
-          <Site siteData={siteData} />
+          <Site siteData={basicEvent} />
         </Chart>
       </Left>
       <Right>
-        <Keyword keywordKeys={keywordKeys} keywordValues={keywordValues} />
-        <Tag tagKeys={tagKeys} tagValues={tagValues} />
+        <Keyword keywordData={mouseEvent} />
+        <Tag tagEvent={mouseEvent} />
       </Right>
     </Wrapper>
   );
@@ -66,13 +58,8 @@ const Right = styled.div`
 `;
 
 Graph.propTypes = {
-  visitData: PropTypes.number.isRequired,
-  timeData: PropTypes.object.isRequired,
-  siteData: PropTypes.array.isRequired,
-  keywordKeys: PropTypes.array.isRequired,
-  keywordValues: PropTypes.array.isRequired,
-  tagKeys: PropTypes.array.isRequired,
-  tagValues: PropTypes.array.isRequired,
+  basicEvent: PropTypes.array.isRequired,
+  mouseEvent: PropTypes.array.isRequired,
 };
 
 export default Graph;

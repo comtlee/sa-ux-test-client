@@ -1,16 +1,19 @@
 import React from "react";
+import getCount from "../../shared/getCount";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import styled from "styled-components";
 import { COLORS } from "../../constants/colors";
 import PropTypes from "prop-types";
 
-const Keyword = ({ keywordKeys, keywordValues }) => {
+const Keyword = ({ keywordData }) => {
+  const keywordCount = getCount(keywordData, "key");
+  console.log(keywordData[0]);
   const data = {
-    labels: keywordKeys.map((key) => key),
+    labels: keywordCount[0].map((key) => key),
     datasets: [
       {
-        data: keywordValues.map((value) => value),
+        data: keywordCount[1].map((value) => value),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",
@@ -56,8 +59,7 @@ const Title = styled.div`
 `;
 
 Keyword.propTypes = {
-  keywordKeys: PropTypes.array.isRequired,
-  keywordValues: PropTypes.array.isRequired,
+  keywordData: PropTypes.array.isRequired,
 };
 
 export default Keyword;

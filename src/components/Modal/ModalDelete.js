@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../../constants/colors";
-import PropTypes from "prop-types";
 
 const ModalDelete = ({ children }) => {
   return (
@@ -28,7 +27,7 @@ const Content = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 50vmin;
+  width: 40vmin;
   height: 20vmin;
   padding: 1rem;
   border-radius: 2rem;
