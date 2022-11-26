@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const Time = ({ timeData }) => {
   const time =
-    new Date(timeData.disconnectTime) - new Date(timeData.connectTime);
+    new Date(timeData[0].disconnectTime) - new Date(timeData[0].connectTime);
   const average = Math.ceil(time / 1000 / 60);
 
   return (
@@ -50,7 +50,7 @@ const Content = styled.div`
 `;
 
 Time.propTypes = {
-  timeData: PropTypes.object.isRequired,
+  timeData: PropTypes.array.isRequired,
 };
 
 export default Time;
