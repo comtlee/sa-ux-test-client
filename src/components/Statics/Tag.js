@@ -1,16 +1,19 @@
 import React from "react";
+import getCount from "../../shared/getCount";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import styled from "styled-components";
 import { COLORS } from "../../constants/colors";
 import PropTypes from "prop-types";
 
-const Tag = ({ tagKeys, tagValues }) => {
+const Tag = ({ tagEvent }) => {
+  const tagCount = getCount(tagEvent, "tag");
+
   const data = {
-    labels: tagKeys.map((key) => key),
+    labels: tagCount[0].map((key) => key),
     datasets: [
       {
-        data: tagValues.map((value) => value),
+        data: tagCount[1].map((value) => value),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",
@@ -55,8 +58,7 @@ const Title = styled.div`
 `;
 
 Tag.propTypes = {
-  tagKeys: PropTypes.array.isRequired,
-  tagValues: PropTypes.array.isRequired,
+  tagEvent: PropTypes.array.isRequired,
 };
 
 export default Tag;

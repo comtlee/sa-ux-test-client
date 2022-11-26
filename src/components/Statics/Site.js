@@ -1,4 +1,5 @@
 import React from "react";
+import getCount from "../../shared/getCount";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import styled from "styled-components";
@@ -6,19 +7,13 @@ import { COLORS } from "../../constants/colors";
 import PropTypes from "prop-types";
 
 const Site = ({ siteData }) => {
-  const counts = siteData.reduce((name, count) => {
-    name[count] = (name[count] || 0) + 1;
-    return name;
-  }, {});
-
-  const keys = Object.keys(counts);
-  const values = Object.values(counts);
+  const siteCount = getCount(siteData[0].referrer, "site");
 
   const data = {
-    labels: keys.map((site) => site),
+    labels: siteCount[0].map((site) => site),
     datasets: [
       {
-        data: values.map((site) => site),
+        data: siteCount[1].map((site) => site),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",
