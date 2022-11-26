@@ -46,7 +46,7 @@ const Header = () => {
 
       navigate("/projects");
     } catch (error) {
-      console.error(error);
+      throw new Error("Error");
     }
   };
 
