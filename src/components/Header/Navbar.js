@@ -1,24 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { COLORS } from "../../constants/colors";
 
 const Navbar = () => {
   const projectId = localStorage.getItem("projectId");
+  const navigate = useNavigate();
 
   return (
     <Wrapper>
-      <Dashboard to={"/projects"} data-testid="Projectlist">
+      <Dashboard
+        onClick={() => navigate("/projects")}
+        data-testid="Projectlist"
+      >
         Projectlist
       </Dashboard>
       <Dashboard
-        to={`/tests/${JSON.parse(projectId)}/dashboard`}
+        onClick={() => navigate(`/tests/${JSON.parse(projectId)}/dashboard`)}
         data-testid="dashboard"
       >
         Dashboard
       </Dashboard>
       <Dashboard
-        to={`/tests/${JSON.parse(projectId)}/recording`}
+        onClick={() => navigate(`/tests/${JSON.parse(projectId)}/recording`)}
         data-testid="recording"
       >
         Recording
@@ -35,7 +39,7 @@ const Wrapper = styled.div`
   border-bottom: 0.1rem solid ${COLORS.LIGHT_GRAY};
 `;
 
-const Dashboard = styled(Link)`
+const Dashboard = styled.div`
   text-decoration: none;
   color: ${COLORS.LIGHT_GRAY};
 
