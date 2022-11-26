@@ -14,18 +14,13 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={isLoggedIn ? <Projects /> : <Main />} />
-      {isLoggedIn ? (
-        <>
-          <Route path="/projects" element={<Projects />}>
-            <Route path="new" element={<CreateProject />} />
-            <Route path=":id/delete" element={<DeleteProject />} />
-          </Route>
-          <Route path="/tests/:id/dashboard" element={<Dashboard />} />
-          <Route path="/tests/:id/recording" element={<Recording />} />
-        </>
-      ) : (
-        <Route path="*" element={<NotFound />} />
-      )}
+      <Route path="/projects" element={<Projects />}>
+        <Route path="new" element={<CreateProject />} />
+        <Route path=":id/delete" element={<DeleteProject />} />
+      </Route>
+      <Route path="/tests/:id/dashboard" element={<Dashboard />} />
+      <Route path="/tests/:id/recording" element={<Recording />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

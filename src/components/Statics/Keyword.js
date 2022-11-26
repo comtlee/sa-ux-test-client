@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 const Keyword = ({ keywordData }) => {
   const keywordCount = getCount(keywordData, "key");
-  console.log(keywordData[0]);
+
   const data = {
     labels: keywordCount[0].map((key) => key),
     datasets: [
