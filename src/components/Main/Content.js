@@ -32,12 +32,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 100vw;
-  height: 100vh;
+  width: 1510px;
+  height: 710px;
   background-image: url("/images/ux-test.png");
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 90%;
+  background-position: bottom;
+  background-size: 98%;
 `;
 
 const HeadText = styled.div`
