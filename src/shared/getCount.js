@@ -1,5 +1,5 @@
 const getCount = (eventData, text) => {
-  const eventList = eventData.map((data) => {
+  const eventList = eventData?.map((data) => {
     if (text === "site") {
       return data;
     } else if (text === "key") {
@@ -9,7 +9,7 @@ const getCount = (eventData, text) => {
     }
   });
 
-  const eventCounts = eventList.reduce((name, count) => {
+  const eventCounts = eventList?.reduce((name, count) => {
     name[count] = (name[count] || 0) + 1;
     return name;
   }, {});

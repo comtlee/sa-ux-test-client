@@ -7,7 +7,7 @@ import { COLORS } from "../../constants/colors";
 import PropTypes from "prop-types";
 
 const Site = ({ siteData }) => {
-  const siteCount = getCount(siteData[0].referrer, "site");
+  const siteCount = siteData.referrer && getCount(siteData.referrer, "site");
 
   const data = {
     labels: siteCount[0].map((site) => site),
@@ -61,7 +61,7 @@ const Title = styled.div`
 `;
 
 Site.propTypes = {
-  siteData: PropTypes.array.isRequired,
+  siteData: PropTypes.object.isRequired,
 };
 
 export default Site;

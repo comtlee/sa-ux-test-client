@@ -23,13 +23,12 @@ const Recording = () => {
   if (isError) {
     throw new Error("Error");
   }
-  const video = data;
 
   return (
     <>
       <Header />
       <Navbar />
-      {video && <Video video={video} />}
+      {data && <Video video={data} />}
     </>
   );
 };
