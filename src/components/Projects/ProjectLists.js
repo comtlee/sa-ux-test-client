@@ -1,13 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
 import { BsArrowReturnRight } from "react-icons/bs";
+import { ImCopy } from "react-icons/im";
 import styled from "styled-components";
 import { COLORS } from "../../constants/colors";
 
 const ProjectLists = ({ projectList }) => {
   const navigate = useNavigate();
   const projectlist = projectList?.data.filteredProjects;
+
+  const handleCopyClipBoard = async (key) => {
+    try {
+      await navigator.clipboard.writeText(key);
+      alert("클립보드에 Project Key값이 복사되었습니다.");
+    } catch (error) {
+      alert("복사에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
 
   const handleMoveDashboard = (url) => {
     navigate(url);
@@ -36,13 +46,19 @@ const ProjectLists = ({ projectList }) => {
                   <BsArrowReturnRight /> {list.projectUrl}
                 </Content>
               </ContentsList>
-              <ContentsList>
-                <Title>Project Key</Title>
-                <Content>
-                  <BsArrowReturnRight /> {list.key}
-                </Content>
-              </ContentsList>
             </ProjectLink>
+            <ContentsList>
+              <Title>Project Key</Title>
+              <CopyIcon>
+                <BsArrowReturnRight /> {list.key}
+                <ImCopy
+                  className="icon"
+                  onClick={() => {
+                    handleCopyClipBoard(list.key);
+                  }}
+                />
+              </CopyIcon>
+            </ContentsList>
             <TrashIcon onClick={() => navigate(`/projects/${list._id}/delete`)}>
               <BsTrash />
             </TrashIcon>
@@ -61,8 +77,8 @@ const Container = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 55vmin;
-  height: 38vmin;
+  width: 95%;
+  height: 98%;
   margin: 0 1rem;
   padding: 0.5rem;
   border-radius: 1rem;
@@ -70,12 +86,11 @@ const Wrapper = styled.div`
 `;
 
 const ProjectLink = styled.div`
-  margin: 0.4rem;
   text-decoration: none;
 `;
 
 const ContentsList = styled.div`
-  margin: 1rem 1rem;
+  margin: 1rem;
 `;
 
 const Title = styled.div`
@@ -87,6 +102,17 @@ const Title = styled.div`
 const Content = styled.div`
   font-size: 1rem;
   color: ${COLORS.GRAY};
+`;
+
+const CopyIcon = styled.div`
+  font-size: 1rem;
+  color: ${COLORS.GRAY};
+
+  .icon {
+    margin-left: 0.4rem;
+    font-size: 1.1rem;
+    color: ${COLORS.LIGHT_PINK};
+  }
 `;
 
 const TrashIcon = styled.div`

@@ -12,7 +12,7 @@ const Visit = ({ visitData }) => {
         <div>Total Visit</div>
       </Title>
       <Content>
-        <div>{visitData[0].visit}명</div>
+        <div>{visitData.visit}명</div>
       </Content>
     </Wrapper>
   );
@@ -49,7 +49,7 @@ const Content = styled.div`
 `;
 
 Visit.propTypes = {
-  visitData: PropTypes.array.isRequired,
+  visitData: PropTypes.object.isRequired,
 };
 
 export default Visit;

@@ -1,9 +1,9 @@
 {
   "name": "sa-ux-test-client",
-  "version": "0.14.5",
+  "version": "1.0.0",
   "private": true,
   "repository": "https://github.com/comt-mix/sa-ux-test-client.git",
-  "author": "Sang-a Lee <comt-mix@gmail.com>",
+  "author": "Sang-a Lee <comt.mix@gmail.com>",
   "jest": {
     "transformIgnorePatterns": [
       "node_modules/(?!axios)"

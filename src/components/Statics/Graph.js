@@ -58,7 +58,7 @@ const Right = styled.div`
 `;
 
 Graph.propTypes = {
-  basicEvent: PropTypes.array.isRequired,
+  basicEvent: PropTypes.object.isRequired,
   mouseEvent: PropTypes.array.isRequired,
 };
 

@@ -26,8 +26,8 @@ const Content = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 60vmin;
-  height: 40vmin;
+  width: 30%;
+  height: 40%;
   padding: 1rem;
   border-radius: 2rem;
   background: ${COLORS.WHITE};

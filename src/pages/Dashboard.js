@@ -18,21 +18,28 @@ const Dashboard = () => {
       `${DOMAIN}/tests/${JSON.stringify(projectId)}/testlist`,
     );
   };
+
   const { data, isError } = useQuery("getTestList", getTestList, {
-    initialData: [],
+    initialData: {},
   });
 
   if (isError) {
     throw new Error("Error");
   }
-  const basicEvent = data.data?.testlist[0].basicEvent;
-  const mouseEvent = data.data?.testlist[0].mouseEvent;
+  const isSuccess = data.data?.result === "success";
+
+  const basicEvent = isSuccess && data.data?.testlist.basicEvent[0];
+  const mouseEvent = isSuccess && data.data?.testlist.mouseEvent;
 
   return (
     <>
       <Header />
       <Navbar />
-      {basicEvent && <Graph basicEvent={basicEvent} mouseEvent={mouseEvent} />}
+      {basicEvent ? (
+        <Graph basicEvent={basicEvent} mouseEvent={mouseEvent} />
+      ) : (
+        "생성된 프로젝트가 없습니다. 프로젝트를 생성해주세요!"
+      )}
     </>
   );
 };

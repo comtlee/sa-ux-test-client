@@ -80,10 +80,10 @@ const CreateProject = () => {
 };
 
 const Form = styled.form`
-  margin: 2rem;
+  margin: 0.5rem;
 
   input {
-    width: 50vmin;
+    width: 100%;
     height: 5vmin;
     border-radius: 0.4rem;
   }
