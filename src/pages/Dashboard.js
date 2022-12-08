@@ -6,6 +6,7 @@ import { DOMAIN } from "../config/domain";
 import Header from "../components/Header/Header";
 import Navbar from "../components/Header/Navbar";
 import Graph from "../components/Statics/Graph";
+import styled from "styled-components";
 
 const Dashboard = () => {
   const params = useParams();
@@ -38,10 +39,20 @@ const Dashboard = () => {
       {basicEvent ? (
         <Graph basicEvent={basicEvent} mouseEvent={mouseEvent} />
       ) : (
-        "생성된 프로젝트가 없습니다. 프로젝트를 생성해주세요!"
+        <TextWrapper>
+          <div>테스트 사이트로부터 정보를 받아올 수 없습니다.</div>
+          <div>Project Key가 연결되었는지 다시 확인 부탁드립니다.</div>
+        </TextWrapper>
       )}
     </>
   );
 };
 
 export default Dashboard;
+
+const TextWrapper = styled.h2`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 5rem;
+`;

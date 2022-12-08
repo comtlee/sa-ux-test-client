@@ -25,6 +25,7 @@ const CreateProject = () => {
       key: uuidv4(),
     });
   };
+
   const { mutate, isError } = useMutation((value) => createProject(value));
 
   if (isError) {
