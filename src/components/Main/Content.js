@@ -32,8 +32,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 1510px;
-  height: 710px;
+  width: 100%;
+  height: 100%;
   background-image: url("/images/ux-test.png");
   background-repeat: no-repeat;
   background-position: bottom;
